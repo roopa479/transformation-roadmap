@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JPMorgan Chase Transformation Roadmap</title>
+<style>
+@page{size:A4 landscape;margin:0}
+:root{--bg:#eef2f7;--ink:#10223a;--mut:#51627a;--line:#d6dfeb;--navy:#0b2a4a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:Inter,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;color:var(--ink);overflow:hidden}
+#stage{width:1280px;height:800px;transform-origin:top left;padding:12px 20px 10px;display:grid;grid-template-rows:auto 1fr auto auto;gap:9px}
+header{background:linear-gradient(120deg,#071a33,#0d3a63 70%,#1769aa);color:#fff;border-radius:12px;padding:7px 20px;display:flex;align-items:center;gap:14px}
+.logo{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#e2bd6b,#b8862b);display:grid;place-items:center;font-weight:900;font-size:15px;color:#071a33}
+header h1{font-size:23px}header p{font-size:12.5px;opacity:.9;margin-top:1px}
+.stats{margin-left:auto;display:flex;gap:8px}.stat{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);border-radius:9px;padding:2px 14px;text-align:center;font-size:12px}.stat b{display:block;font-size:19px;line-height:1.1}
+.main{position:relative;display:grid;grid-template-columns:1fr 1fr 1fr;gap:64px;min-height:0}
+.col{display:flex;flex-direction:column;gap:7px;min-height:0}
+.ph{border-radius:10px;padding:7px 12px;color:#fff;display:flex;justify-content:space-between;align-items:center}
+.ph h2{font-size:17px}.ph small{font-size:12px;opacity:.95;display:block}.ph .q{font-weight:800;font-size:14px;background:rgba(255,255,255,.22);border-radius:8px;padding:3px 10px;white-space:nowrap}
+.cards{display:flex;flex-direction:column;gap:7px;flex:1;min-height:0}
+.card{flex:1;background:#fff;border:1px solid var(--line);border-left:6px solid var(--cc);border-radius:10px;padding:6px 11px;font-size:12.2px;line-height:1.3;display:flex;flex-direction:column;gap:2px;box-shadow:0 2px 7px rgba(16,34,58,.07);position:relative;z-index:2}
+.card h3{font-size:13.4px;display:flex;justify-content:space-between;gap:6px;align-items:center}.card h3 span{font-size:11px;font-weight:800;color:var(--cc);background:var(--bg2);border-radius:6px;padding:0 7px;white-space:nowrap}
+.card b{color:var(--cc)}.card .dep{font-weight:700;color:#7f1d1d}
+.ev{margin-top:auto;font-size:11px;color:var(--mut);border-top:1px dashed var(--line);padding-top:2px;line-height:1.25}.ev i{font-style:normal;color:#0b7a4b;font-weight:800;margin-right:3px}
+svg.ov{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:1}
+.bottom{display:grid;grid-template-columns:1.4fr 1fr;gap:12px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:10px;padding:5px 12px 7px;box-shadow:0 2px 7px rgba(16,34,58,.05)}
+.panel h4{font-size:13.5px;margin-bottom:2px;display:flex;justify-content:space-between;align-items:baseline}.panel h4 em{font-style:normal;font-weight:600;color:var(--mut);font-size:11px}
+.gantt{position:relative;display:grid;grid-template-columns:278px repeat(12,1fr);font-size:11.2px;row-gap:1px;align-items:center}
+.gh{font-weight:800;text-align:center;color:var(--mut);font-size:11px;border-bottom:1px solid var(--line)}
+.gl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:600;padding-right:4px}
+.gb{height:10px;border-radius:4px;margin:0 1px}
+.gate{position:absolute;top:16px;bottom:-3px;border-left:2px dashed #c0392b}.gate small{position:absolute;bottom:-12px;left:-9px;font-size:10px;font-weight:800;color:#c0392b;background:#fff;padding:0 2px}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:3px 14px;font-size:12.5px;font-weight:600}.rules div b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--navy);color:#fff;font-size:11px;margin-right:6px}
+.key{margin-top:6px;font-size:11.5px;color:var(--mut);line-height:1.4;border-top:1px dashed var(--line);padding-top:4px}.key i{font-style:normal;color:#0b7a4b;font-weight:800}
+footer{font-size:10.5px;color:var(--mut);display:flex;justify-content:space-between;gap:12px}
+</style></head><body>
+<div id="stage">
+<header><div class="logo">JPM</div><div><h1>JPMorgan Chase Transformation Roadmap</h1><p>Crawl &rarr; Walk &rarr; Run &middot; 8 initiatives sequenced by dependency over a stylised 12-quarter timeline</p></div>
+<div class="stats"><div class="stat"><b>3</b>Crawl</div><div class="stat"><b>3</b>Walk</div><div class="stat"><b>2</b>Run</div><div class="stat"><b>9</b>Dependencies</div></div></header>
+<div class="main" id="main"><svg class="ov" id="ov"></svg></div>
+<div class="bottom">
+<section class="panel"><h4>Executive timeline <em>Q1 = start (stylised) &middot; G1 Crawl live &middot; G2 ready-to-run met</em></h4><div class="gantt" id="gantt"></div></section>
+<section class="panel"><h4>Sequencing rules <em>Line colour = source initiative</em></h4><div class="rules"><div><b>1</b>Foundation first</div><div><b>4</b>Pilot before deploying</div><div><b>2</b>Foundations in parallel</div><div><b>5</b>Keep human oversight</div><div><b>3</b>Integrate before scaling</div><div><b>6</b>Measure continuously</div></div>
+<div class="key"><i>&#9679;</i> = public JPMorgan disclosure or press report. Ready-to-run targets are group-set. Ready = ready-to-run signal. Each dependency reads "X &rarr; Y: enables ..." on the receiving card.</div></section>
+</div>
+<footer><span>Sources to verify: CCB letters (AR2024), Dimon letter (Apr 2024), Investor Days 2023/2025, CIO.com (Dec 2024), CTO Forum case, COiN press (2017).</span><span>Quarters are illustrative, not JPMorgan's dates.</span></footer>
+</div>
+<script>
+var PH={c:{n:"Crawl: Foundation",s:"Parallel builds, none depends on another",q:"Q1&ndash;Q4",col:"#0b2a4a",bg:"#e7eef7"},w:{n:"Walk: Deployment",s:"Limited scope, each names its Crawl needs",q:"Q5&ndash;Q8",col:"#1769aa",bg:"#e3f0fa"},r:{n:"Run: Scale",s:"Scales a Walk initiative, needs org change",q:"Q9&ndash;Q12",col:"#8a5f12",bg:"#f8efd9"}};
+var CL={C1:"#0e7c86",C2:"#1769aa",C3:"#7b4fa3",W1:"#d97706",W2:"#2b8a3e",W3:"#c2410c"};
+var I=[
+{id:"C1",p:"c",n:"Enterprise Data Governance",q:"Q1&ndash;Q2",a:1,b:2,l:["<b>Creates:</b> data ownership, quality rules, metadata, access control.","<b>Outcome:</b> trusted data for decisions."],ev:"Data mesh of owned data products, ~500 PB (Investor Day 2023; CIO.com 2024)"},
+{id:"C2",p:"c",n:"Cloud & Platform Modernisation",q:"Q1&ndash;Q3",a:1,b:3,l:["<b>Creates:</b> scalable platforms and modern infrastructure.","<b>Outcome:</b> scalability, resilience, speed."],ev:"~100 apps on AWS in 2020; ~65% of workloads in cloud by 2025 (CIO.com; Investor Day 2025)"},
+{id:"C3",p:"c",n:"Risk Controls & Process Standards",q:"Q1&ndash;Q4",a:1,b:4,l:["<b>Creates:</b> security, privacy, AI governance, standard workflows.","<b>Outcome:</b> safer launches, less variation."],ev:"2,000+ AI practitioners; governance links use case to data and model (Dimon letter 2024)"},
+{id:"W1",p:"w",n:"Omnichannel Customer Experience",q:"Q5&ndash;Q6",a:5,b:6,l:["<span class='dep'>C1 &rarr; W1: governed customer data<br>C2 &rarr; W1: modern platforms</span>","<b>Scope:</b> one product line, one region.","<b>Ready:</b> channel-switch completion &ge;85%."],ev:"~71M digitally active customers, up 35% since 2019 (CCB letter, Annual Report 2024)"},
+{id:"W2",p:"w",n:"Intelligent Workflow Automation",q:"Q5&ndash;Q7",a:5,b:7,l:["<span class='dep'>C3 &rarr; W2: standard processes<br>C2 &rarr; W2: scalable platforms</span>","<b>Scope:</b> two pilot processes.","<b>Ready:</b> &ge;30% cycle-time cut."],ev:"Closest analogue: COiN loan-document review, 2017; ~360,000 hours reported (press; verify)"},
+{id:"W3",p:"w",n:"Analytics & GenAI Copilots",q:"Q6&ndash;Q8",a:6,b:8,l:["<span class='dep'>C1 &rarr; W3: trusted data &middot; C3 &rarr; W3: controls<br>C2 &rarr; W3: compute</span>","<b>Scope:</b> pilot teams, human review.","<b>Ready:</b> &ge;50% weekly use, 0 unreviewed outputs."],ev:"LLM Suite: 200,000 users in ~8 months (2024); ~$1.5bn AI value, 2023 (CTO Forum case)"},
+{id:"R1",p:"r",n:"Hyperautomation & AI Decision Support",q:"Q9&ndash;Q11",a:9,b:11,l:["<span class='dep'>W2 &rarr; R1: proven workflows<br>W3 &rarr; R1: AI assistance</span>","<b>Scales:</b> W2 (and W3) across all lines of business.","<b>Org change:</b> process owners redesign workflows; role redesign and training; human-review checkpoints; model-risk approval before go-live.","<b>Outcome:</b> measurable, efficient operations."],ev:"Employee Assistant rolled out; 450+ AI use cases in production (Annual Report 2025)"},
+{id:"R2",p:"r",n:"Personalised Digital Experiences",q:"Q10&ndash;Q12",a:10,b:12,l:["<span class='dep'>W1 &rarr; R2: integrated customer data</span>","<b>Scales:</b> W1 to all segments and channels.","<b>Org change:</b> a journey owner per segment; consent and privacy rules; marketing and operations on one customer view.","<b>Outcome:</b> more relevant digital engagement."],ev:"~$220m of benefits from personalisation reported (Investor Day 2023)"}
+];
+var D=[["C1","W1"],["C2","W1"],["C3","W2"],["C2","W2"],["C1","W3"],["C3","W3"],["C2","W3"],["W2","R1"],["W3","R1"],["W1","R2"]];
+var main=document.getElementById('main');
+["c","w","r"].forEach(function(k){var P=PH[k],col=document.createElement('div');col.className='col';
+ col.innerHTML='<div class="ph" style="background:'+P.col+'"><div><h2>'+P.n+'</h2><small>'+P.s+'</small></div><div class="q">'+P.q+'</div></div><div class="cards"></div>';
+ var cards=col.querySelector('.cards');
+ I.filter(function(x){return x.p===k}).forEach(function(x){var c=document.createElement('div');c.className='card';c.id=x.id;c.style.setProperty('--cc',P.col);c.style.setProperty('--bg2',P.bg);
+  c.innerHTML='<h3>'+x.id+' &middot; '+x.n+'<span>'+x.q+'</span></h3>'+x.l.map(function(t){return '<div>'+t+'</div>'}).join('')+'<div class="ev"><i>&#9679;</i>'+x.ev+'</div>';cards.appendChild(c)});
+ main.appendChild(col)});
+var g=document.getElementById('gantt'),h='<div class="gh" style="text-align:left">Initiative</div>';for(var q=1;q<=12;q++)h+='<div class="gh">Q'+q+'</div>';
+I.forEach(function(x){var col=PH[x.p].col;h+='<div class="gl">'+x.id+' '+x.n.replace(/&amp;/g,'&')+'</div>';for(var q=1;q<=12;q++){h+=(q>=x.a&&q<=x.b)?'<div><div class="gb" style="background:'+col+'"></div></div>':'<div></div>'}});
+h+='<div class="gl" style="color:#c0392b">Continuous AI governance</div>';for(var q=1;q<=12;q++)h+=(q>=9)?'<div><div class="gb" style="background:repeating-linear-gradient(135deg,#c0392b 0 4px,#f2b8b0 4px 8px)"></div></div>':'<div></div>';
+g.innerHTML=h+'<div class="gate" style="left:calc(278px + (100% - 278px)*4/12)"><small>G1</small></div><div class="gate" style="left:calc(278px + (100% - 278px)*8/12)"><small>G2</small></div>';
+function draw(){var ov=document.getElementById('ov'),mr=main.getBoundingClientRect(),s=mr.width/main.offsetWidth;
+ function R(id){var r=document.getElementById(id).getBoundingClientRect();return{l:(r.left-mr.left)/s,r:(r.right-mr.left)/s,t:(r.top-mr.top)/s,h:r.height/s}}
+ var out='',outN={},inN={},oi={},ii={};D.forEach(function(d){outN[d[0]]=(outN[d[0]]||0)+1;inN[d[1]]=(inN[d[1]]||0)+1});
+ var arr=D.map(function(d){var A=R(d[0]),B=R(d[1]);oi[d[0]]=(oi[d[0]]||0)+1;ii[d[1]]=(ii[d[1]]||0)+1;
+  var y1=A.t+A.h*(.12+.76*oi[d[0]]/(outN[d[0]]+1)),y2=B.t+B.h*(.12+.76*ii[d[1]]/(inN[d[1]]+1));return{s:d[0],x1:A.r,y1:y1,x2:B.l,y2:y2}});
+ var groups={};arr.forEach(function(a){var k=Math.round(a.x1);(groups[k]=groups[k]||[]).push(a)});
+ Object.keys(groups).forEach(function(k){var G=groups[k];G.sort(function(a,b){return (a.y1+a.y2)-(b.y1+b.y2)});
+  G.forEach(function(a,i){var gap=a.x2-a.x1,cx=a.x1+gap*(.12+.76*(i+.5)/G.length),r=8,dir=a.y2>a.y1?1:-1,col=CL[a.s];
+   var d;if(Math.abs(a.y2-a.y1)<2){d='M'+a.x1+','+a.y1+' L'+a.x2+','+a.y2}else d='M'+a.x1+','+a.y1+' L'+(cx-r)+','+a.y1+' Q'+cx+','+a.y1+' '+cx+','+(a.y1+dir*r)+' L'+cx+','+(a.y2-dir*r)+' Q'+cx+','+a.y2+' '+(cx+r)+','+a.y2+' L'+(a.x2-1)+','+a.y2;
+   out+='<path d="'+d+'" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/><path d="'+d+'" fill="none" stroke="'+col+'" stroke-width="2.4" stroke-linecap="round"/><circle cx="'+a.x1+'" cy="'+a.y1+'" r="3.6" fill="'+col+'" stroke="#fff" stroke-width="1.5"/><path d="M'+(a.x2+1)+','+a.y2+' l-9,-5 l0,10 z" fill="'+col+'"/>'})});
+ ov.innerHTML=out}
+function fit(){var s=Math.min(innerWidth/1280,innerHeight/800);document.getElementById('stage').style.transform='scale('+s+')'}
+addEventListener('resize',fit);fit();draw();addEventListener('load',draw);
+addEventListener('beforeprint',function(){document.getElementById('stage').style.transform='scale(.877)'});addEventListener('afterprint',fit);
+</script></body></html>
