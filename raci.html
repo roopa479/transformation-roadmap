@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JPMorgan Chase Governance RACI</title>
+<style>
+:root{--bg:#eef2f7;--ink:#10223a;--mut:#51627a;--line:#d6dfeb;--navy:#0b2a4a;--R:#1769aa;--Rb:#e3f0fa;--A:#8a5f12;--Ab:#f8efd9;--C:#1f7a3d;--Cb:#e2f4e8;--I:#5b6b82;--Ib:#eceff4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.4;padding:16px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:14px}
+header{background:linear-gradient(120deg,#071a33,#0d3a63 70%,#1769aa);color:#fff;border-radius:12px;padding:16px 22px}
+header h1{font-size:24px}
+header p{font-size:13.5px;opacity:.92;margin-top:3px}
+.who{font-size:12.5px;margin-top:8px;opacity:.92}
+nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:8px;font-size:13px}
+nav a{color:#fff;text-underline-offset:3px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 18px}
+.panel h2{font-size:17px;margin-bottom:8px}
+.key{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-block;font-size:12.5px;font-weight:700;border-radius:6px;padding:2px 8px;margin:2px 3px 2px 0;line-height:1.3}
+.R{background:var(--Rb);color:var(--R)}.A{background:var(--Ab);color:var(--A)}.C{background:var(--Cb);color:var(--C)}.I{background:var(--Ib);color:var(--I)}
+.k b{font-size:14px;margin-right:2px}
+.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.lg{display:flex;gap:10px;align-items:center;border-radius:10px;padding:10px 12px;border:1px solid transparent}
+.lg i{font-style:normal;flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:18px;color:#fff}
+.lg b{display:block;font-size:14px}
+.lg span{font-size:12.5px;color:#2a3b52}
+.lgR{background:var(--Rb);border-color:#b9d7ee}.lgR i{background:var(--R)}.lgR b{color:var(--R)}
+.lgA{background:var(--Ab);border-color:#e6cf9a}.lgA i{background:var(--A)}.lgA b{color:var(--A)}
+.lgC{background:var(--Cb);border-color:#a9dcb8}.lgC i{background:var(--C)}.lgC b{color:var(--C)}
+.lgI{background:var(--Ib);border-color:#cdd5e1}.lgI i{background:var(--I)}.lgI b{color:var(--I)}
+.phases{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:10px;font-size:12.5px;color:var(--mut)}
+@media(max-width:800px){.legend{grid-template-columns:1fr 1fr}}
+.scroll{overflow-x:auto}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:940px;font-size:13px}
+th,td{padding:9px 10px;vertical-align:top;text-align:left;border-bottom:1px solid var(--line)}
+th{color:#fff;font-size:13px}
+th.d{background:var(--navy);border-radius:8px 0 0 0}
+th.hA{background:var(--A)}th.hR{background:var(--R)}th.hC{background:var(--C)}th.hI{background:var(--I);border-radius:0 8px 0 0}
+td.d{min-width:250px}
+td.d b{display:block;font-size:13.5px;margin-bottom:4px}
+td.a{background:#fdf7e8}
+td.a .chip{font-size:13.5px;border:2px solid var(--A)}
+.anc{font-size:11px;font-weight:800;border-radius:5px;padding:0 6px;margin-right:4px;display:inline-block;color:#fff}
+.pc{background:#0b2a4a}.pw{background:#1769aa}.pr{background:#8a5f12}.pg{background:#c0392b}
+.typ{font-size:11.5px;font-weight:700;color:var(--mut);margin-right:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:10px}
+.why{border:1px solid var(--line);border-top:5px solid var(--A);border-radius:10px;padding:10px 14px}
+.why h3{font-size:14px;margin-bottom:4px}
+.why p{font-size:13px;color:#2a3b52}
+.why .en{margin-top:6px;font-size:12.5px;font-weight:600;color:var(--C);background:var(--Cb);border-radius:6px;padding:3px 8px}
+.gap{border-left:6px solid #c0392b}
+.gap h2{color:#9b1c1c}
+.gap li{font-size:13px;margin-left:18px;margin-bottom:2px}
+.gap li b{color:#9b1c1c}
+footer{font-size:11.5px;color:var(--mut)}
+a:focus-visible{outline:3px solid #e2bd6b;outline-offset:2px}
+</style></head><body>
+<div class="wrap">
+<header>
+<h1>JPMorgan Chase Governance RACI</h1>
+<p>Seven recurring governance decisions in JPMorgan Chase's transformation, each with a single Accountable role, tied to the initiatives and gates in the Crawl/Walk/Run roadmap.</p>
+<div class="who"><b>Governance Designer:</b> Nazifa Maliha</div>
+<nav><a href="index.html">About us</a><a href="roadmap.html">Roadmap</a><a href="dashboard.html">QBR dashboard</a></nav>
+</header>
+
+<section class="panel">
+<div class="legend">
+<div class="lg lgR"><i>R</i><div><b>Responsible</b><span>Does the work</span></div></div>
+<div class="lg lgA"><i>A</i><div><b>Accountable</b><span>Owns the outcome. One per decision</span></div></div>
+<div class="lg lgC"><i>C</i><div><b>Consulted</b><span>Gives input before</span></div></div>
+<div class="lg lgI"><i>I</i><div><b>Informed</b><span>Told after</span></div></div>
+</div>
+<div class="phases">Tags under each decision show the roadmap initiative it relates to (C1 to R2) and its phase colour:<span class="anc pc">Crawl</span><span class="anc pw">Walk</span><span class="anc pr">Run</span><span class="anc pg">Gate (G1, G2)</span></div>
+</section>
+
+<section class="panel">
+<h2>Who decides what</h2>
+<div class="scroll"><table>
+<thead><tr><th class="d">Recurring decision</th><th class="hA">A: Accountable</th><th class="hR">R: Responsible</th><th class="hC">C: Consulted</th><th class="hI">I: Informed</th></tr></thead>
+<tbody>
+<tr><td class="d"><b>1. How is funding split across initiatives, and when is it released?</b><span class="typ">Budget</span><span class="anc pc">C1</span><span class="anc pc">C2</span><span class="anc pc">C3</span><span class="anc pg">G1</span><span class="anc pg">G2</span></td>
+<td class="a"><span class="chip A">Chief Financial Officer</span></td>
+<td><span class="chip R">Chief Information Officer</span><span class="chip R">Line-of-business CFOs</span></td>
+<td><span class="chip C">Chief Data &amp; Analytics Officer</span><span class="chip C">Chief Risk Officer</span><span class="chip C">CEO, Consumer &amp; Community Banking</span></td>
+<td><span class="chip I">Operating Committee</span><span class="chip I">Initiative leads</span></td></tr>
+
+<tr><td class="d"><b>2. Who approves a deviation from the target cloud and platform design?</b><span class="typ">Architecture</span><span class="anc pc">C2</span><span class="anc pw">W2</span><span class="anc pw">W3</span></td>
+<td class="a"><span class="chip A">Chief Information Officer</span></td>
+<td><span class="chip R">Chief Technology Officer</span><span class="chip R">Platform architecture leads</span></td>
+<td><span class="chip C">Chief Data &amp; Analytics Officer</span><span class="chip C">Chief Information Security Officer</span><span class="chip C">LOB technology heads</span></td>
+<td><span class="chip I">W2 and W3 leads</span></td></tr>
+
+<tr><td class="d"><b>3. Who sets data ownership, quality and access rules across business lines?</b><span class="typ">Data</span><span class="anc pc">C1</span><span class="anc pw">W1</span><span class="anc pw">W3</span></td>
+<td class="a"><span class="chip A">Chief Data &amp; Analytics Officer</span></td>
+<td><span class="chip R">LOB data owners</span><span class="chip R">Data product owners</span></td>
+<td><span class="chip C">Chief Risk Officer</span><span class="chip C">Chief Privacy Officer</span><span class="chip C">Chief Information Security Officer</span></td>
+<td><span class="chip I">All initiative leads</span></td></tr>
+
+<tr><td class="d"><b>4. When resources are tight, which Walk pilot is built or scaled next?</b><span class="typ">Priorities</span><span class="anc pw">W1</span><span class="anc pw">W2</span><span class="anc pw">W3</span><span class="anc pg">G2</span></td>
+<td class="a"><span class="chip A">Chief Operating Officer</span></td>
+<td><span class="chip R">Transformation office</span><span class="chip R">Initiative leads</span></td>
+<td><span class="chip C">Chief Financial Officer</span><span class="chip C">Chief Information Officer</span><span class="chip C">CEO, Consumer &amp; Community Banking</span></td>
+<td><span class="chip I">Operating Committee</span><span class="chip I">LOB heads</span></td></tr>
+
+<tr><td class="d"><b>5. Who approves and governs the key cloud and AI providers?</b><span class="typ">Vendors</span><span class="anc pc">C2</span><span class="anc pw">W3</span></td>
+<td class="a"><span class="chip A">Chief Procurement Officer</span></td>
+<td><span class="chip R">CIO sourcing team</span><span class="chip R">Vendor relationship owners</span></td>
+<td><span class="chip C">Chief Information Security Officer</span><span class="chip C">Chief Risk Officer</span><span class="chip C">General Counsel</span></td>
+<td><span class="chip I">Chief Financial Officer</span><span class="chip I">Initiative leads</span></td></tr>
+
+<tr><td class="d"><b>6. Who signs off an AI use case to move from pilot to production?</b><span class="typ">AI approval</span><span class="anc pw">W3</span><span class="anc pr">R1</span></td>
+<td class="a"><span class="chip A">Chief Risk Officer</span></td>
+<td><span class="chip R">Model risk team</span><span class="chip R">Use-case owners</span></td>
+<td><span class="chip C">Chief Data &amp; Analytics Officer</span><span class="chip C">Chief Information Security Officer</span><span class="chip C">General Counsel</span></td>
+<td><span class="chip I">Process owners</span><span class="chip I">Operating Committee</span></td></tr>
+
+<tr><td class="d"><b>7. Who owns each customer journey and settles clashes between business-line roadmaps?</b><span class="typ">Journeys</span><span class="anc pw">W1</span><span class="anc pr">R2</span></td>
+<td class="a"><span class="chip A">CEO, Consumer &amp; Community Banking</span></td>
+<td><span class="chip R">Journey owners per segment</span><span class="chip R">Digital product heads</span></td>
+<td><span class="chip C">Chief Data &amp; Analytics Officer</span><span class="chip C">Chief Privacy Officer</span><span class="chip C">Marketing and operations leads</span></td>
+<td><span class="chip I">Chief Operating Officer</span><span class="chip I">Other LOB CEOs</span></td></tr>
+</tbody></table></div>
+</section>
+
+<section class="panel">
+<h2>Why this owner, and what makes it real</h2>
+<div class="cards">
+<div class="why"><h3>1. Budget &middot; <span class="chip A">Chief Financial Officer</span></h3><p>The CFO controls firmwide investment, so only this role can weigh rival claims on one pool of money. That matters most at G1 and G2, when business units push for near-term returns.</p><div class="en">Enforced by: funds for each phase are released only after the gate review.</div></div>
+<div class="why"><h3>2. Architecture &middot; <span class="chip A">Chief Information Officer</span></h3><p>The CIO runs the shared platform that C2 Cloud &amp; Platform Modernisation builds, so any exception affects every business line. One final say lets W2 and W3 teams be refused without a committee dispute.</p><div class="en">Enforced by: an architecture review before any W2 or W3 build starts.</div></div>
+<div class="why"><h3>3. Data &middot; <span class="chip A">Chief Data &amp; Analytics Officer</span></h3><p>C1 Enterprise Data Governance creates the rules W1 and W3 depend on, so one executive must own them across business lines. The roadmap cites a data mesh of owned data products, which fits a single enterprise owner.</p><div class="en">Enforced by: data products are opened only through the owner approval process.</div></div>
+<div class="why"><h3>4. Priorities &middot; <span class="chip A">Chief Operating Officer</span></h3><p>W1, W2 and W3 share the same platforms and teams, so someone above any single business line must rank them. This stops one unit from putting its own pilot first.</p><div class="en">Enforced by: the ranked list is set at G2, and changes need COO sign-off.</div></div>
+<div class="why"><h3>5. Vendors &middot; <span class="chip A">Chief Procurement Officer</span></h3><p>Cloud and AI providers bring long-term cost, security and legal exposure, so one role should own the contract terms. Keeping this apart from the CIO stops the platform owner approving its own suppliers.</p><div class="en">Enforced by: no C2 or W3 provider contract is signed without procurement approval.</div></div>
+<div class="why"><h3>6. AI approval &middot; <span class="chip A">Chief Risk Officer</span></h3><p>R1 Hyperautomation &amp; AI Decision Support scales AI into operations, and the roadmap requires model-risk approval before go-live. The CRO is independent of the teams that gain from launching, so the sign-off is credible.</p><div class="en">Enforced by: release is blocked until the model-risk sign-off is recorded.</div></div>
+<div class="why"><h3>7. Journeys &middot; <span class="chip A">CEO, Consumer &amp; Community Banking</span></h3><p>R2 Personalised Digital Experiences scales W1 Omnichannel Customer Experience across segments, and the roadmap calls for a journey owner per segment. The CCB CEO owns the consumer business whose roadmaps clash.</p><div class="en">Enforced by: each journey has a named owner, and cross-channel changes go through that owner.</div></div>
+</div>
+</section>
+
+</div>
+</body></html>
