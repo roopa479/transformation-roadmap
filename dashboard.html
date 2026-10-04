@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JPMorgan Chase Transformation QBR Dashboard</title>
+<style>
+@page{size:A4 landscape;margin:0}
+:root{--bg:#eef2f7;--ink:#10223a;--mut:#51627a;--line:#d6dfeb;--navy:#0b2a4a;--g:#1f8a4c;--a:#d98a00;--r:#c8372d;--gbg:#e4f3ea;--abg:#fdf1d8;--rbg:#fbe4e1}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:Inter,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;color:var(--ink);overflow:hidden}
+#stage{width:1280px;height:800px;transform-origin:top left;padding:12px 20px 9px;display:grid;grid-template-rows:auto auto 1fr auto auto;gap:9px}
+/* Header: health band is the one loud element; read it first */
+header{display:grid;grid-template-columns:1fr auto;border-radius:12px;overflow:hidden;background:linear-gradient(120deg,#071a33,#0d3a63 70%,#1769aa);color:#fff}
+.hl{display:flex;align-items:center;gap:14px;padding:8px 20px}
+.logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#e2bd6b,#b8862b);display:grid;place-items:center;font-weight:900;font-size:15px;color:#071a33;flex:none}
+h1{font-size:21px}.sub{font-size:12px;opacity:.9;margin-top:1px}
+nav{display:flex;gap:14px;font-size:12px;margin-top:3px}nav a{color:#fff;text-underline-offset:3px}
+.health{display:flex;align-items:center;gap:12px;background:var(--a);color:#1d1400;padding:8px 20px;width:470px}
+.dot{width:34px;height:34px;border-radius:50%;background:#1d1400;color:var(--a);display:grid;place-items:center;font-weight:900;flex:none}
+.health b{display:block;font-size:15px}.health span{font-size:11.8px;line-height:1.3;display:block}
+.tl{background:#fff;border:1px solid var(--line);border-radius:10px;padding:5px 14px;display:grid;grid-template-columns:150px 1fr auto;gap:12px;align-items:center;font-size:11.5px}
+.tl b{font-size:12.5px}.track{position:relative;height:22px}
+.seg{position:absolute;top:5px;height:9px;border-radius:4px}
+.gt{position:absolute;top:0;bottom:-2px;border-left:2px dashed #c0392b}.gt small{position:absolute;top:13px;left:-9px;font-size:10px;font-weight:800;color:#c0392b;background:#fff;padding:0 2px}
+.now{position:absolute;top:-1px;width:12px;height:12px;border-radius:50%;background:var(--a);border:2px solid #fff;box-shadow:0 0 0 2px var(--a);margin-left:-6px}
+.cnt{display:flex;gap:6px}.cnt span{font-weight:700;border-radius:99px;padding:1px 9px;font-size:11.5px}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;min-height:0}
+.col{display:flex;flex-direction:column;gap:7px;min-height:0}
+.ph{border-radius:10px;padding:6px 12px;color:#fff;display:flex;justify-content:space-between;align-items:center;background:var(--c)}
+.ph h2{font-size:16px}.ph small{font-size:11.5px;opacity:.95;display:block}
+.ph .q{font-weight:800;font-size:12.5px;background:rgba(255,255,255,.22);border-radius:8px;padding:2px 9px;white-space:nowrap}
+.pst{font-size:11px;font-weight:800;border-radius:99px;padding:1px 9px;background:#fff;margin-left:8px}
+.g{color:var(--g)}.a{color:#9a6200}.r{color:var(--r)}
+.cards{display:flex;flex-direction:column;gap:7px;flex:1;min-height:0}
+.m{flex:1;background:#fff;border:1px solid var(--line);border-left:6px solid var(--c);border-radius:10px;padding:6px 11px;display:flex;flex-direction:column;gap:2px;box-shadow:0 2px 7px rgba(16,34,58,.06)}
+.top{display:flex;justify-content:space-between;gap:6px;align-items:flex-start}
+.nm{font-weight:700;font-size:12.6px;line-height:1.25}
+.id{display:inline-block;font-size:10.5px;font-weight:800;color:#fff;border-radius:5px;padding:0 6px;margin-right:5px;background:var(--ic)}
+.tag{font-size:10.5px;font-weight:700;border-radius:4px;padding:0 6px;border:1px solid;white-space:nowrap}
+.lead{color:#2b4f8a;border-color:#9db8e0;background:#eef4fc}.lag{color:#5a3a99;border-color:#c9b3e8;background:#f5effc}.org{color:#0b5f58;border-color:#9fd6cf;background:#eaf8f6}
+.val{display:flex;align-items:baseline;gap:7px}.val strong{font-size:23px;line-height:1.05}.val em{font-style:normal;font-size:11.3px;color:var(--mut)}
+.st{margin-left:auto;font-size:11.3px;font-weight:800;display:flex;align-items:center;gap:4px;white-space:nowrap}.st::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
+.bar{position:relative;height:9px;background:#e6eaf1;border-radius:3px;margin-top:2px}.bar i{position:absolute;inset:0 auto 0 0;border-radius:3px}
+.bar i.g{background:var(--g)}.bar i.a{background:var(--a)}.bar i.r{background:var(--r)}.bar u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink)}
+.why{margin-top:auto;font-size:10.8px;color:var(--mut);border-top:1px dashed var(--line);padding-top:2px;line-height:1.25}.why b{color:#7f1d1d}
+.dec{background:#fff;border:1px solid var(--line);border-left:6px solid var(--r);border-radius:10px;padding:6px 14px 8px}
+.dec h3{font-size:13.5px;margin-bottom:4px}.dec h3 small{font-weight:600;color:var(--mut);font-size:11px;margin-left:6px}
+.dec ol{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;list-style:none}
+.dec li{background:var(--bg);border-radius:8px;padding:6px 10px;font-size:12px;line-height:1.3}
+.dec li b{display:block;font-size:12.6px;margin-bottom:2px}
+.chip{display:inline-block;font-size:11.5px;font-weight:700;border-radius:6px;padding:0 7px;background:#f8efd9;color:#8a5f12;border:2px solid #8a5f12;margin-right:4px}
+.dec .anc{font-size:10.5px;font-weight:800;color:#fff;border-radius:5px;padding:0 6px;margin-right:3px;display:inline-block}
+.dec li span.t{display:block;color:var(--mut);font-size:11px;margin-top:2px}
+footer{font-size:10.3px;color:var(--mut);display:flex;justify-content:space-between;gap:14px}
+</style></head><body>
+<div id="stage">
+<header>
+ <div class="hl"><div class="logo">JPM</div><div><h1>JPMorgan Chase Transformation: Quarterly Business Review</h1>
+ <div class="sub">Dashboard Designer: Shahzaib · Q7 of 12 (stylised timeline) · Values are illustrative</div>
+ <nav><a href="index.html">About us</a><a href="roadmap.html">Roadmap</a><a href="raci.html">RACI</a></nav></div></div>
+ <div class="health"><div class="dot">!</div><div><b>Amber: slightly behind plan</b><span>Crawl foundations are in place, but W3 and R2 are off track one quarter before gate G2.</span></div></div>
+</header>
+
+<section class="tl"><b>Where we are</b>
+ <div class="track" id="track"></div>
+ <div class="cnt"><span style="background:var(--gbg);color:var(--g)">3 on track</span><span style="background:var(--abg);color:#9a6200">3 at risk</span><span style="background:var(--rbg);color:var(--r)">2 off track</span></div></section>
+
+<div class="phases" id="phases"></div>
+
+<section class="dec">
+ <h3>Decisions required this quarter<small>All three are rows of the Governance RACI, with the Accountable role named</small></h3>
+ <ol>
+  <li><b>RACI 4 · Priorities: when resources are tight, which Walk pilot is built or scaled next?</b><span class="chip">Chief Operating Officer</span><span class="anc" style="background:#1769aa">W1</span><span class="anc" style="background:#1769aa">W2</span><span class="anc" style="background:#1769aa">W3</span><span class="anc" style="background:#c0392b">G2</span><span class="t">W3 adoption (41%) and W1 completion (79%) both need the same teams before G2.</span></li>
+  <li><b>RACI 6 · AI approval: who signs off an AI use case to move from pilot to production?</b><span class="chip">Chief Risk Officer</span><span class="anc" style="background:#1769aa">W3</span><span class="anc" style="background:#8a5f12">R1</span><span class="t">Model-risk sign-off must be recorded before W3 pilots can feed R1.</span></li>
+  <li><b>RACI 7 · Journeys: who owns each customer journey and settles clashes between business-line roadmaps?</b><span class="chip">CEO, Consumer &amp; Community Banking</span><span class="anc" style="background:#1769aa">W1</span><span class="anc" style="background:#8a5f12">R2</span><span class="t">Only 4 of 8 segments have a named journey owner; R2 needs all of them.</span></li>
+ </ol>
+</section>
+<footer><span>Bar = current value · black tick = target or ready-to-run threshold · 6 leading (2 org health), 2 lagging. W1, W2, W3 thresholds come from the roadmap; all current values and the C1, C2, R1, R2 targets are group assumptions.</span><span>JPMorgan does not publish quarterly progress for these initiatives (public-record gap).</span></footer>
+</div>
+<script>
+var PH=[
+{k:"c",n:"Crawl: Foundation",s:"Gate G1 passed",q:"Q1–Q4",c:"#0b2a4a",st:["Complete","g"],m:[
+ ["C1","Enterprise Data Governance","Data products with a named owner","Leading","lead","97%","target 100%","On track","g",97,100,"W1 and W3 depend on trusted, owned data (C1 → W1, C1 → W3)."],
+ ["C2","Cloud & Platform Modernisation","In-scope workloads on the modern platform","Leading","lead","96%","target 100%","On track","g",96,100,"Platform and compute for W1, W2 and W3."]]},
+{k:"w",n:"Walk: Deployment",s:"Limited scope · gate G2 at end of Q8",q:"Q5–Q8",c:"#1769aa",st:["Behind","a"],m:[
+ ["W1","Omnichannel Customer Experience","Channel-switch completion, one product line and region","Leading","lead","79%","ready ≥85%","At risk","a",79,85,"Roadmap's ready-to-run signal for W1."],
+ ["W3","Analytics & GenAI Copilots","Pilot teams using the copilot weekly","Leading","lead","41%","ready ≥50% · 0 unreviewed outputs","Off track","r",41,50,"Adoption gate; the zero-unreviewed-outputs gate is met. <b>Feeds RACI 4, 6.</b>"],
+ ["W2","Intelligent Workflow Automation","Cycle-time cut across two pilot processes","Lagging","lag","24%","ready ≥30%","At risk","a",60,75,"Confirmed result that justifies R1 (scale 0–40%)."]]},
+{k:"r",n:"Run: Scale",s:"Org change comes first",q:"Q9–Q12",c:"#8a5f12",st:["Preparing","a"],m:[
+ ["R1","Hyperautomation & AI Decision Support","Process owners trained to redesign workflows","Org health","org","38%","target 50% by Q8","At risk","a",38,50,"Role redesign and training required before scale."],
+ ["R2","Personalised Digital Experiences","Segments with a named journey owner","Org health","org","50%","target 75% by Q8","Off track","r",50,75,"The roadmap needs one journey owner per segment. <b>Feeds RACI 7.</b>"],
+ ["W1","Omnichannel Customer Experience","Satisfaction change in the W1 pilot region (baseline for R2)","Lagging","lag","+4.2 pts","target +4 pts","On track","g",70,67,"Confirmed outcome that W1 can scale to R2 (scale 0–6 pts)."]]}];
+var IC={C1:"#0e7c86",C2:"#1769aa",C3:"#7b4fa3",W1:"#d97706",W2:"#2b8a3e",W3:"#c2410c",R1:"#8a5f12",R2:"#8a5f12"};
+var h="";PH.forEach(function(p){
+ h+='<section class="col" style="--c:'+p.c+'"><div class="ph"><div><h2>'+p.n+'<span class="pst '+p.st[1]+'">'+p.st[0]+'</span></h2><small>'+p.s+'</small></div><div class="q">'+p.q+'</div></div><div class="cards">';
+ p.m.forEach(function(m){
+  h+='<div class="m" style="--ic:'+IC[m[0]]+'"><div class="top"><div class="nm"><span class="id">'+m[0]+'</span>'+m[1].replace("&","&amp;")+'<br><span style="font-weight:500;color:var(--mut);font-size:11.6px">'+m[2]+'</span></div><span class="tag '+m[4]+'">'+m[3]+'</span></div>'
+  +'<div class="val"><strong>'+m[5]+'</strong><em>'+m[6]+'</em><span class="st '+m[8]+'">'+m[7]+'</span></div>'
+  +'<div class="bar"><i class="'+m[8]+'" style="width:'+m[9]+'%"></i><u style="left:'+m[10]+'%"></u></div><div class="why">'+m[11]+'</div></div>'});
+ h+='</div></section>'});
+document.getElementById('phases').innerHTML=h;
+var T=document.getElementById('track'),t='',cols=["#0b2a4a","#1769aa","#8a5f12"],pc=function(q){return (q-1)/12*100};
+[[1,4],[5,8],[9,12]].forEach(function(r,i){t+='<div class="seg" style="left:'+pc(r[0])+'%;width:'+(pc(r[1]+1)-pc(r[0])-.4)+'%;background:'+cols[i]+'"></div>'});
+t+='<div class="gt" style="left:'+pc(5)+'%"><small>G1</small></div><div class="gt" style="left:'+pc(9)+'%"><small>G2</small></div><div class="now" style="left:'+(pc(7)+100/24)+'%"></div>';
+T.innerHTML=t+'<div style="position:absolute;top:13px;left:'+(pc(7)+100/24)+'%;transform:translateX(-50%);font-size:10px;font-weight:800;color:#9a6200">Q7 now</div>';
+function fit(){var s=Math.min(innerWidth/1280,innerHeight/800);document.getElementById('stage').style.transform='scale('+s+')'}
+addEventListener('resize',fit);fit();
+addEventListener('beforeprint',function(){document.getElementById('stage').style.transform='scale(.877)'});addEventListener('afterprint',fit);
+</script></body></html>
